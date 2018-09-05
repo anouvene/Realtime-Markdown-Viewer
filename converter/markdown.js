@@ -1,3 +1,12 @@
+ var parseBold = function(str) {
+  var boldRegExp = /(\*\*)(.*?)\1/;
+  var stra = [];
+  while ((stra = boldRegExp.exec(str)) !== null) {
+    str = str.replace(stra[0], '<strong>' + stra[2] + '</strong>')
+  }
+  return str;
+ }
+
  var parseHeadline = function(str) {
    var headlineRegExp =  /^(\#{1,6})([^\#\n]+)$/m;
    var stra = [];
@@ -17,13 +26,14 @@
   return str;
  }
 
-var markdown = {
+ var markdown = {
   parse: function (str, strict) {
     'use strict';
+    str = parseBold(str);
     str = parseHeadline(str);
     str = parseHorizontaleLine(str);
     return str;
   }
-};
+ };
 
 module.exports = markdown;
