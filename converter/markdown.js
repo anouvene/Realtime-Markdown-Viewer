@@ -41,6 +41,7 @@
     str = parseBold(str);
     str = parseHeadline(str);
     str = parseHorizontaleLine(str);
+    str = parseLink(str);
     return str;
   }
  };
