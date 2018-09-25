@@ -90,6 +90,7 @@ var markdown = {
     str = parseHorizontaleLine(str);
     str = parseLink(str);
     str = parseBlockQuote(str);
+    str = parseCode(str);
     return str;
   }
  };
