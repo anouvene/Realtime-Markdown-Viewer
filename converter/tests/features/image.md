@@ -1,1 +1,1 @@
-![](../images/anouv.png)
+![](path/to/img.jpg)

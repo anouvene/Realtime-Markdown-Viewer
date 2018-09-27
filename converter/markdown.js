@@ -75,6 +75,15 @@
   }
   return str;
  }
+ 
+ var parseCode = function(str) {
+  var codeRegExp = /`{1}(\w+)`{1}/;
+  var stra = [];
+  while ((stra = codeRegExp.exec(str)) !== null) {
+    str = str.replace(stra[0], '<pre>' + stra[1] + '</pre>');
+  }
+  return str;
+ }
 
  var parseBlockQuote = function(str) {
   var quoteRegExp = /\:\"(.*?)\"\:/
@@ -84,6 +93,15 @@
   }
   return str;
  }
+ 
+  var parseImage = function(str) {
+   var imageRegExp = /(!\[.*?]\()(.+?)(\))/g;
+   var stra = [];
+   while ((stra = imageRegExp.exec(str)) !== null) {
+     str = str.replace(stra[0], '<img src=">' + stra[2] + '">');
+   }
+   return str;
+  }
 
  var parseDel = function(str) {
   var delRegExp = /\{(.*?)\}/
@@ -104,9 +122,11 @@
     str = parseStrong(str);
     str = parseHorizontaleLine(str);
     str = parseLink(str);
-    str = parseCodeBlock(str);
+    str = parseCode(str);
     str = parseBlockQuote(str);
     str = parseDel(str);
+    str = parseCodeBlock(str);
+    str = parseImage(str);
     return str;
   }
  };
