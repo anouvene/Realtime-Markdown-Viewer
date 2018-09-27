@@ -98,7 +98,7 @@
    var imageRegExp = /(!\[.*?]\()(.+?)(\))/g;
    var stra = [];
    while ((stra = imageRegExp.exec(str)) !== null) {
-     str = str.replace(stra[0], '<img src=">' + stra[2] + '">');
+     str = str.replace(stra[0], '<img src="' + stra[2] + '">');
    }
    return str;
   }
